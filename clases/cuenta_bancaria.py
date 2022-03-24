@@ -1,6 +1,8 @@
 import random
-saldo = random.randint(0,10000)
-print("Tu saldo es: ", saldo)
+saldo1 = random.randint(0,10000)
+print("El saldo de la primera cuenta bancaria es: ", saldo1)
+saldo2 = random.randint(0,10000)
+print("El saldo de la segunda cuenta bancaria es: ", saldo2)
 num_movimientos_max = 5 
 class cuenta_bancaria:
     def __init__(self, ID, nombre, fechaA, saldo, numero):
@@ -21,24 +23,30 @@ class cuenta_bancaria:
         if eleccion == 1:
             retirar =int(input("¿Cuánto dinero quieres retirar?:"))
             while retirar != num_movimientos_max:
-                if retirar > saldo:
+                if retirar > saldo1:
                     print("No puedes retirar dinero")
                 else:
                     print("Ha retirado su dinero correctamente, tu saldo actual es: ", )
-                    print(saldo-retirar)
+                    print(saldo1-retirar)
                 break  
         elif eleccion == 2:
             transferir =int(input("¿Cuánto dinero quieres transferir?:"))
             while transferir != num_movimientos_max:
-                if transferir > saldo:
+                if transferir > saldo1:
+                    
                     print("No puedes transferir dinero")
                 else:
-                    print("Ha transferido su dinero correctamente")
+                    print("Ha transferido su dinero correctamente, tu saldo actual es ")
+                    print("Primera cuenta bancaria: ")
+                    print(saldo1-transferir)
+                    print("Tu saldo actual es ")
+                    print("Segunda cuenta bancaria: ")
+                    print(saldo2+transferir)
                 break
         elif eleccion == 3:
             ingresar =int(input("¿Cuánto dinero quieres ingresar?:"))
             print("Tu saldo actual es: ")
-            print(saldo+ingresar)
+            print(saldo1+ingresar)
     def cuenta_Bancaria2(retirar,ingresar,transferir):
         print("Cuenta bancaria 2. Seleccione: ")
         print(" 1.retirar")
@@ -50,23 +58,31 @@ class cuenta_bancaria:
         if eleccion == 1:
             retirar =int(input("¿Cuánto dinero quieres retirar?:"))
             while retirar != num_movimientos_max:
-                if retirar > saldo:
+                if retirar > saldo2:
                     print("No puedes retirar dinero")
                 else:
                     print("Ha retirado su dinero correctamente, tu saldo actual es: ", )
-                    print(saldo-retirar)
+                    print(saldo2-retirar)
                 break  
         elif eleccion == 2:
             transferir =int(input("¿Cuánto dinero quieres transferir?:"))
             while transferir != num_movimientos_max:
-                if transferir > saldo:
+                if transferir > saldo2:
                     print("No puedes transferir dinero")
                 else:
-                    print("Ha transferido su dinero correctamente")
+                    print("Ha transferido su dinero correctamente, tu saldo actual es ")
+                    print("Segunda cuenta bancaria: ")
+                    print(saldo2-transferir)
+                    print("Tu saldo actual es ")
+                    print("Primera cuenta bancaria: ")
+                    print(saldo1+transferir)
                 break
         elif eleccion == 3:
             ingresar =int(input("¿Cuánto dinero quieres ingresar?:"))
             print("Tu saldo actual es: ")
-            print(saldo+ingresar)
+            print(saldo2+ingresar)
 print(cuenta_bancaria.cuenta_Bancaria1("retirar","transferir", "ingresar"))
 print(cuenta_bancaria.cuenta_Bancaria2("retirar","transferir", "ingresar"))
+
+
+
