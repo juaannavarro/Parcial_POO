@@ -1,5 +1,5 @@
-from clases.animal import Animal
-from clases.cuenta_bancaria import cuenta_Bancaria1
+from clases.animal import *
+from clases.cuenta_bancaria import *
 
 
 if __name__ == "__main__":

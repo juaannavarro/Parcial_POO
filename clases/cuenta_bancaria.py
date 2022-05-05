@@ -55,7 +55,7 @@ class cuenta_bancaria:
                     
     def cuenta_Bancaria2(retirar,ingresar,transferir):
             while True:
-                print("Cuenta bancaria 1. Seleccione: ")
+                print("Cuenta bancaria 2. Seleccione: ")
                 print(" 1.retirar")
                 print(" 2.transferir")
                 print(" 3.ingresar")

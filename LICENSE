@@ -66,7 +66,134 @@
    2. Grant of Copyright License. Subject to the terms and conditions of
       this License, each Contributor hereby grants to You a perpetual,
       worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
+import pandas as pd  
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt 
+from scipy import stats
+import csv
+import math
+# haz un dataframe con una funcion que tenga una variable llamada naranjas y tenga 100 valores entre 100 y 230
+# limpia el dataframe de valores que no sean números
+# ordena el dataframe de menor a mayor
+# abre el archivo en un csvs
+
+
+def dataframe():
+    df = pd.DataFrame({'Peso naranjas': np.random.randint(100, 230, 100)})
+    df.dropna(inplace=True)
+    df.sort_values(by='Peso naranjas', ascending=True, inplace=True)
+    df.to_csv('naranjas.csv', index=False)
+dataframe()
+
+lista=[]
+with open('naranjas.csv', 'r') as archivo:
+    reader = csv.reader(archivo)
+    for row in reader:
+        lista.append(row)
+print(lista)
+
+#haz una funcion que muestre los valores del dataframe menor que 130, igual a 130 y mayor que 130
+def muestra_valores(df):
+    df = pd.read_csv('naranjas.csv')
+    print("numero total: ", df['Peso naranjas'].count())
+    print(("El número de naranjas menor que 130 es: "), df[(df['Peso naranjas'] < 130)]['Peso naranjas'].count())
+    print(("El número de naranjas igual que 130 es: "), df[(df['Peso naranjas'] == 130)]['Peso naranjas'].count())
+    print(("El número de naranjas mayor que 130 es: "), df[(df['Peso naranjas'] > 130)]['Peso naranjas'].count())
+muestra_valores("df")
+
+
+# haz una funcion que te haga la media de los valores del dataframe
+
+def cuenta():
+    df1 = pd.read_csv('naranjas.csv')
+    return df1['Peso naranjas'].count()
+print("la cantidad de naranjas es: ", cuenta())
+
+def media():
+    df = pd.read_csv('naranjas.csv')
+    return df['Peso naranjas'].mean()
+print("la media es", media())
+# haz una funcion que te haga la mediana de los valores del dataframe
+
+
+def mediana():
+    df = pd.read_csv('naranjas.csv')
+    return df['Peso naranjas'].median()
+print("la mediana es", mediana())
+# haz una funcion que te haga la moda de los valores del dataframe
+def moda():
+    df = pd.read_csv('naranjas.csv')
+    print("La moda es: ", stats.mode(df['Peso naranjas']))
+moda()
+# haz una funcion que te haga la desviacion tipica de los valores del dataframe
+
+
+def desviacion_tipica():
+    df = pd.read_csv('naranjas.csv')
+    return df['Peso naranjas'].std()
+print("la desviacion tipica es", desviacion_tipica())
+# haz una funcion que te haga la varianza de los valores del dataframe
+
+
+def varianza():
+    df = pd.read_csv('naranjas.csv')
+    return df['Peso naranjas'].var()
+print("la varianza es", varianza())
+
+#haz una funcion que te haga los cuartiles de los valores del dataframe
+
+
+def cuartiles():
+    df = pd.read_csv('naranjas.csv')
+    return df['Peso naranjas'].quantile([0.25, 0.5, 0.75])
+print("los cuartiles son: ", cuartiles())
+
+#haz una funcion que te haga los percentiles de los valores del dataframe
+
+
+def percentiles():
+    df = pd.read_csv('naranjas.csv')
+    return df['Peso naranjas'].quantile([0.35, 0.52, 0.90])
+print("los percentiles son: ", percentiles())
+
+#grafica de barras
+def grafica_barras():
+    df = pd.read_csv('naranjas.csv')
+    sns.countplot(df['Peso naranjas']).set_title('Naranjas')
+    plt.ylabel("Número de naranjas")
+    plt.xticks(rotation= 90 )
+    plt.show()
+grafica_barras()
+
+
+
+def grafica_sectores():
+    df = pd.read_csv('naranjas.csv')
+    data=df['Peso naranjas'].groupby(
+        pd.cut(df['Peso naranjas'], [0,130,131,230])).count()
+    rango = ["<130", "130", ">130"]
+    fig,ax = plt.subplots()
+    g=ax.pie(data, labels=rango, autopct='%0.1f%%')
+    plt.show()
+grafica_sectores()
+
+def grafica_dispersion():
+    df = pd.read_csv('naranjas.csv')
+    data=df['Peso naranjas'].groupby(
+        pd.cut(df['Peso naranjas'], range(100,240,10))).count()
+    fig,ax= plt.subplots()
+    lista=[]
+    for i in range(100,230,10):
+        lista.append(i)
+    plt.scatter(lista, data)
+    plt.show()
+grafica_dispersion()
+
+
+
+
+copyright license to reproduce, prepare Derivative Works of,
       publicly display, publicly perform, sublicense, and distribute the
       Work and such Derivative Works in Source or Object form.
 
